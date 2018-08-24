@@ -4,9 +4,10 @@ const request = require('request');
 const pdfMakePrinter = require('pdfmake/src/printer');
 const express=require('express');
 var app=express();
-const url="https://en.wikipedia.org/wiki/God_of_War_(2018_video_game)"
+const base_url="https://en.wikipedia.org/wiki/"
 
-app.get('/',function(req,res){
+app.get('/:topic',function(req,res){
+  var url=base_url+req.params.topic;
 request(url,function(error, response ,html){
   //console.log("Here");
   if(!error)
